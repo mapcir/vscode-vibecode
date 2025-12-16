@@ -4,7 +4,7 @@
     "providers": {
         "gemini": {
             "baseURL": "https://generativelanguage.googleapis.com",
-            "defaultModel": "gemini-2.0-flash-exp",
+            "defaultModel": "gemini-2.5-pro",
             "models": [
                 "gemini-2.5-pro",
                 "gemini-2.0-flash-exp",
