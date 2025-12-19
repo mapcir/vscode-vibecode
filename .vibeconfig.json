@@ -1,118 +1,128 @@
 {
+    "proxy": null,
     "defaultProvider": "gemini",
     "providers": {
         "gemini": {
-            "baseURL": "https://generativelanguage.googleapis.com/v1beta",
-            "defaultModel": "gemini-2.5-flash",
             "models": {
                 "gemini-2.5-pro": {
-                    "contextWindow": 2097152,
-                    "supportsImages": true
+                    "contextWindow": 2000000,
+                    "supportsImages": true,
+                    "family": "gemini"
                 },
-                "gemini-2.5-flash": {
-                    "contextWindow": 1048576,
-                    "supportsImages": true
+                "gemini-2.0-flash": {
+                    "contextWindow": 2000000,
+                    "supportsImages": true,
+                    "family": "gemini"
                 },
                 "gemini-2.0-flash-exp": {
-                    "contextWindow": 1048576,
-                    "supportsImages": true
+                    "contextWindow": 1000000,
+                    "supportsImages": true,
+                    "family": "gemini"
                 },
                 "gemini-1.5-pro": {
-                    "contextWindow": 2097152,
-                    "supportsImages": true
+                    "contextWindow": 2000000,
+                    "supportsImages": true,
+                    "family": "gemini"
                 },
                 "gemini-1.5-flash": {
-                    "contextWindow": 1048576,
-                    "supportsImages": true
+                    "contextWindow": 1000000,
+                    "supportsImages": true,
+                    "family": "gemini"
                 },
-                "gemini-1.5-flash-8b": {
-                    "contextWindow": 1048576,
-                    "supportsImages": true
+                "gemini-1.0-pro": {
+                    "contextWindow": 30000,
+                    "supportsImages": false,
+                    "family": "gemini"
                 }
             }
         },
         "chatgpt": {
-            "baseURL": "https://api.openai.com/v1",
-            "defaultModel": "gpt-4o",
             "models": {
                 "gpt-4o": {
                     "contextWindow": 128000,
-                    "supportsImages": true
-                },
-                "gpt-4o-mini": {
-                    "contextWindow": 128000,
-                    "supportsImages": true
+                    "supportsImages": true,
+                    "family": "gpt"
                 },
                 "o1-preview": {
                     "contextWindow": 128000,
-                    "supportsImages": false
-                },
-                "o1-mini": {
-                    "contextWindow": 128000,
-                    "supportsImages": false
+                    "supportsImages": true,
+                    "family": "gpt"
                 },
                 "gpt-4-turbo": {
                     "contextWindow": 128000,
-                    "supportsImages": true
-                }
-            }
-        },
-        "deepseek": {
-            "baseURL": "https://api.deepseek.com/v1",
-            "defaultModel": "deepseek-chat",
-            "models": {
-                "deepseek-chat": {
-                    "contextWindow": 64000,
-                    "supportsImages": false
+                    "supportsImages": true,
+                    "family": "gpt"
                 },
-                "deepseek-reasoner": {
-                    "contextWindow": 64000,
-                    "supportsImages": false
+                "gpt-4": {
+                    "contextWindow": 8192,
+                    "supportsImages": false,
+                    "family": "gpt"
+                },
+                "gpt-3.5-turbo": {
+                    "contextWindow": 16385,
+                    "supportsImages": false,
+                    "family": "gpt"
                 }
             }
         },
         "claude": {
-            "baseURL": "https://api.anthropic.com/v1",
-            "defaultModel": "claude-3-5-sonnet-20241022",
             "models": {
                 "claude-3-5-sonnet-20241022": {
                     "contextWindow": 200000,
-                    "supportsImages": true
+                    "supportsImages": true,
+                    "family": "claude"
                 },
-                "claude-3-5-haiku-20241022": {
+                "claude-3-5-sonnet-20240620": {
                     "contextWindow": 200000,
-                    "supportsImages": false
+                    "supportsImages": true,
+                    "family": "claude"
                 },
                 "claude-3-opus-20240229": {
                     "contextWindow": 200000,
-                    "supportsImages": true
+                    "supportsImages": true,
+                    "family": "claude"
                 },
                 "claude-3-sonnet-20240229": {
                     "contextWindow": 200000,
-                    "supportsImages": true
+                    "supportsImages": true,
+                    "family": "claude"
                 },
                 "claude-3-haiku-20240307": {
                     "contextWindow": 200000,
-                    "supportsImages": false
+                    "supportsImages": true,
+                    "family": "claude"
+                }
+            }
+        },
+        "deepseek": {
+            "models": {
+                "deepseek-chat": {
+                    "contextWindow": 64000,
+                    "supportsImages": false,
+                    "family": "other"
+                },
+                "deepseek-coder": {
+                    "contextWindow": 64000,
+                    "supportsImages": false,
+                    "family": "other"
+                },
+                "deepseek-reasoner": {
+                    "contextWindow": 64000,
+                    "supportsImages": false,
+                    "family": "other"
                 }
             }
         },
         "ollama": {
-            "baseURL": "http://localhost:11434/v1",
-            "defaultModel": "deepseek-r1:latest",
-            "type": "local",
             "models": {
+                // Ollama models are user-defined, but we can provide hints/defaults for common ones
                 "deepseek-r1:latest": {
                     "contextWindow": 8192,
-                    "supportsImages": false
+                    "family": "other"
                 },
-                "llama3.2:latest": {
+                "llama3:latest": {
                     "contextWindow": 8192,
-                    "supportsImages": false
-                },
-                "qwen2.5-coder:latest": {
-                    "contextWindow": 32768,
-                    "supportsImages": false
+                    "family": "other"
                 }
             }
         }
@@ -141,6 +151,7 @@
         "custom": {
             "allowedCommands": [
                 "npm",
+                "node",
                 "git",
                 "ls",
                 "cat",
@@ -150,7 +161,7 @@
                 "echo"
             ],
             "blockedCommands": [
-                "rm -rf",
+                "rm -rf /",
                 "sudo rm",
                 "dd",
                 "mkfs"
