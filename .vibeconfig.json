@@ -8,9 +8,9 @@
             "headers": {
                 "Content-Type": "application/json"
             },
-            "defaultModel": "gemini-2.5-flash",
+            "defaultModel": "gemini-1.5-flash",
             "models": {
-                "gemini-2.5-pro": {
+                "gemini-1.5-pro": {
                     "contextWindow": 2097152,
                     "supportsImages": true,
                     "tags": [
@@ -19,7 +19,7 @@
                         "long-context"
                     ]
                 },
-                "gemini-2.5-flash": {
+                "gemini-1.5-flash": {
                     "contextWindow": 1048576,
                     "supportsImages": true,
                     "tags": [
@@ -29,17 +29,17 @@
                 }
             }
         },
-        "chatgpt": {
+        "openai": {
             "baseURL": "https://api.openai.com/v1",
             "method": "POST",
             "headers": {
                 "Authorization": "Bearer ${OPENAI_API_KEY}",
                 "Content-Type": "application/json"
             },
-            "defaultModel": "gpt-5.2-pro",
+            "defaultModel": "gpt-4o",
             "models": {
-                "gpt-5.2-pro": {
-                    "contextWindow": 256000,
+                "gpt-4o": {
+                    "contextWindow": 128000,
                     "supportsImages": true,
                     "tags": [
                         "code",
@@ -48,29 +48,18 @@
                         "top-tier"
                     ]
                 },
-                "gpt-5.1-codex-max": {
-                    "contextWindow": 200000,
-                    "supportsImages": false,
-                    "tags": [
-                        "code",
-                        "reasoning",
-                        "agent"
-                    ]
-                },
-                "gpt-5.1-codex": {
-                    "contextWindow": 200000,
-                    "supportsImages": false,
+                "gpt-4-turbo": {
+                    "contextWindow": 128000,
+                    "supportsImages": true,
                     "tags": [
                         "code",
                         "reasoning"
                     ]
                 },
-                "o3-mini-high": {
-                    "contextWindow": 128000,
+                "gpt-3.5-turbo": {
+                    "contextWindow": 16000,
                     "supportsImages": false,
                     "tags": [
-                        "code",
-                        "reasoning",
                         "fast",
                         "cheap"
                     ]
@@ -85,28 +74,27 @@
                 "anthropic-version": "2023-06-01",
                 "Content-Type": "application/json"
             },
-            "defaultModel": "claude-opus-4.5",
+            "defaultModel": "claude-3-5-sonnet-20240620",
             "models": {
-                "claude-opus-4.5": {
+                "claude-3-5-sonnet-20240620": {
                     "contextWindow": 200000,
                     "supportsImages": true,
                     "tags": [
                         "code",
                         "reasoning",
-                        "architecture",
                         "top-tier"
                     ]
                 },
-                "claude-sonnet-4.5": {
+                "claude-3-opus-20240229": {
                     "contextWindow": 200000,
                     "supportsImages": true,
                     "tags": [
                         "code",
                         "reasoning",
-                        "balanced"
+                        "architecture"
                     ]
                 },
-                "claude-3.5-haiku": {
+                "claude-3-haiku-20240307": {
                     "contextWindow": 200000,
                     "supportsImages": false,
                     "tags": [
@@ -124,44 +112,21 @@
                 "Authorization": "Bearer ${DEEPSEEK_API_KEY}",
                 "Content-Type": "application/json"
             },
-            "defaultModel": "deepseek-r1",
+            "defaultModel": "deepseek-chat",
             "models": {
-                "deepseek-r1": {
-                    "contextWindow": 64000,
-                    "supportsImages": false,
-                    "tags": [
-                        "code",
-                        "reasoning",
-                        "logic",
-                        "cheap"
-                    ]
-                },
-                "deepseek-v3": {
+                "deepseek-coder": {
                     "contextWindow": 64000,
                     "supportsImages": false,
                     "tags": [
                         "code",
                         "reasoning"
                     ]
-                }
-            }
-        },
-        "grok": {
-            "baseURL": "https://api.x.ai/v1",
-            "method": "POST",
-            "headers": {
-                "Authorization": "Bearer ${GROK_API_KEY}",
-                "Content-Type": "application/json"
-            },
-            "defaultModel": "grok-3",
-            "models": {
-                "grok-3": {
-                    "contextWindow": 128000,
+                },
+                "deepseek-chat": {
+                    "contextWindow": 64000,
                     "supportsImages": false,
                     "tags": [
-                        "code",
-                        "reasoning",
-                        "search"
+                        "general"
                     ]
                 }
             }
@@ -173,31 +138,21 @@
             "headers": {
                 "Content-Type": "application/json"
             },
-            "defaultModel": "deepseek-r1:latest",
+            "defaultModel": "llama3",
             "models": {
-                "deepseek-r1:latest": {
+                "llama3": {
                     "contextWindow": 8192,
                     "supportsImages": false,
                     "tags": [
                         "code",
-                        "reasoning",
                         "local"
                     ]
                 },
-                "qwen2.5-coder:latest": {
-                    "contextWindow": 32768,
+                "codellama": {
+                    "contextWindow": 16384,
                     "supportsImages": false,
                     "tags": [
                         "code",
-                        "reasoning",
-                        "local"
-                    ]
-                },
-                "llama3.2:latest": {
-                    "contextWindow": 8192,
-                    "supportsImages": false,
-                    "tags": [
-                        "general",
                         "local"
                     ]
                 }
@@ -206,7 +161,9 @@
     },
     "defaultTerminalPolicy": "turbo",
     "terminalPolicy": {
-        "off": {},
+        "off": {
+            "allowedCommands": []
+        },
         "safe": {
             "blockedCommands": [
                 "rm -rf",
@@ -221,36 +178,22 @@
                 "dd"
             ],
             "requireConfirmation": [
-                "git push",
                 "npm publish"
             ]
         },
         "custom": {
             "allowedCommands": [
                 "npm",
-                "git",
                 "ls",
                 "cat",
-                "grep",
-                "find",
-                "pwd",
-                "echo"
+                "grep"
             ],
             "blockedCommands": [
                 "rm -rf",
-                "sudo rm",
-                "dd",
-                "mkfs"
-            ],
-            "allowedPaths": [
-                "./src",
-                "./tests",
-                "./scripts"
+                "sudo"
             ],
             "requireConfirmation": [
-                "npm install",
-                "npm uninstall",
-                "git push"
+                "npm install"
             ]
         }
     },
@@ -260,52 +203,26 @@
             "description": "Full Agent - Do everything until done",
             "maxIterations": 10,
             "autoTest": true,
-            "autoDebug": true,
             "stopOnlyFor": [
-                "data_loss_risk",
-                "security_risk",
-                "production_changes"
-            ]
-        },
-        "smart": {
-            "description": "AI decides when to ask based on risk",
-            "riskThreshold": 3,
-            "alwaysAskFor": [
-                "delete_file",
-                "architecture_change",
-                "breaking_change"
-            ],
-            "neverAskFor": [
-                "read_files",
-                "search_code",
-                "view_file"
+                "high_risk_actions"
             ]
         },
         "collaborative": {
             "description": "Always ask before executing",
             "requireApprovalFor": [
-                "edit_file",
-                "run_terminal",
-                "delete_file"
+                "write_file",
+                "run_command"
             ]
-        },
-        "optimistic": {
-            "description": "Execute immediately, revert if needed",
-            "atomic": true,
-            "autoRevert": false
         }
     },
     "rag": {
         "enabled": true,
         "autoIndex": true,
-        "indexOnStartup": true,
-        "maxFiles": 500,
-        "topK": 3
+        "maxFiles": 500
     },
     "autoClearHistory": {
         "enabled": true,
         "mode": "smart",
-        "keepSystemPrompt": true,
-        "showNotification": true
+        "keepSystemPrompt": true
     }
 }
