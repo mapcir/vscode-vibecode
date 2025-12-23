@@ -350,7 +350,8 @@
         "autoIndex": true,
         "indexOnStartup": true,
         "maxFiles": 500,
-        "topK": 3
+        "topK": 3,
+        "maxLineLength": 1000
     },
     "autoClearHistory": {
         "enabled": true,
