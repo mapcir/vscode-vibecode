@@ -8,8 +8,27 @@
             "headers": {
                 "Content-Type": "application/json"
             },
-            "defaultModel": "gemini-1.5-flash-latest",
+            "defaultModel": "gemini-3-flash-preview",
             "models": {
+                "gemini-3-flash-preview": {
+                    "contextWindow": 1048576,
+                    "supportsImages": true,
+                    "tags": [
+                        "code",
+                        "agent",
+                        "fast",
+                        "newest"
+                    ]
+                },
+                "gemini-2.5-flash": {
+                    "contextWindow": 1048576,
+                    "supportsImages": true,
+                    "tags": [
+                        "code",
+                        "agent",
+                        "fast"
+                    ]
+                },
                 "gemini-2.0-flash-exp": {
                     "contextWindow": 1048576,
                     "supportsImages": true,
@@ -29,22 +48,6 @@
                     ]
                 },
                 "gemini-1.5-flash-latest": {
-                    "contextWindow": 1048576,
-                    "supportsImages": true,
-                    "tags": [
-                        "code",
-                        "fast"
-                    ]
-                },
-                "gemini-1.5-pro": {
-                    "contextWindow": 2097152,
-                    "supportsImages": true,
-                    "tags": [
-                        "reasoning",
-                        "code"
-                    ]
-                },
-                "gemini-1.5-flash": {
                     "contextWindow": 1048576,
                     "supportsImages": true,
                     "tags": [
