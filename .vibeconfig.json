@@ -4,9 +4,9 @@
     "defaultCognitionMode": "ENGINEER",
     "defaultTerminalPolicy": "turbo",
     "rag": {
-        "enabled": true,
+        "enabled": false,
         "autoIndex": true,
-        "indexOnStartup": true,
+        "indexOnStartup": false,
         "maxFiles": 500,
         "topK": 3,
         "maxLineLength": 1000
