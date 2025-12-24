@@ -1,6 +1,61 @@
 {
-    "proxy": null,
     "defaultProvider": "gemini",
+    "defaultAuthorityLevel": "FULL_AUTONOMY",
+    "defaultCognitionMode": "ENGINEER",
+    "defaultTerminalPolicy": "turbo",
+    "rag": {
+        "enabled": true,
+        "autoIndex": true,
+        "indexOnStartup": true,
+        "maxFiles": 500,
+        "topK": 3,
+        "maxLineLength": 1000
+    },
+    "autoClearHistory": {
+        "enabled": true,
+        "mode": "smart",
+        "keepSystemPrompt": true,
+        "keepRAGContext": false,
+        "showNotification": true
+    },
+    "terminalPolicy": {
+        "off": {
+            "allowedCommands": []
+        },
+        "safe": {
+            "blockedCommands": [
+                "rm -rf",
+                "sudo",
+                "dd"
+            ]
+        },
+        "turbo": {
+            "blockedCommands": [
+                "rm -rf /",
+                "sudo rm",
+                "dd"
+            ],
+            "requireConfirmation": [
+                "npm publish"
+            ]
+        },
+        "custom": {
+            "allowedCommands": [
+                "npm",
+                "ls",
+                "cat",
+                "grep"
+            ],
+            "blockedCommands": [
+                "rm -rf",
+                "sudo"
+            ],
+            "requireConfirmation": [
+                "npm install"
+            ]
+        }
+    },
+    "proxy": null,
     "providers": {
         "gemini": {
             "baseURL": "https://generativelanguage.googleapis.com/v1beta",
@@ -8,6 +63,7 @@
             "headers": {
                 "Content-Type": "application/json"
             },
+            "apiKey": "${GEMINI_API_KEY}",
             "defaultModel": "gemini-3-flash-preview",
             "models": {
                 "gemini-3-flash-preview": {
@@ -265,77 +321,13 @@
                     ]
                 }
             }
+        },
+        "hybrid": {
+            "type": "hybrid",
+            "brain": "gemini",
+            "brainModel": "gemini-3-flash-preview",
+            "worker": "gemini",
+            "workerModel": "gemini-3-flash-preview"
         }
-    },
-    "defaultTerminalPolicy": "turbo",
-    "terminalPolicy": {
-        "off": {
-            "allowedCommands": []
-        },
-        "safe": {
-            "blockedCommands": [
-                "rm -rf",
-                "sudo",
-                "dd"
-            ]
-        },
-        "turbo": {
-            "blockedCommands": [
-                "rm -rf /",
-                "sudo rm",
-                "dd"
-            ],
-            "requireConfirmation": [
-                "npm publish"
-            ]
-        },
-        "custom": {
-            "allowedCommands": [
-                "npm",
-                "ls",
-                "cat",
-                "grep"
-            ],
-            "blockedCommands": [
-                "rm -rf",
-                "sudo"
-            ],
-            "requireConfirmation": [
-                "npm install"
-            ]
-        }
-    },
-    "defaultAuthorityMode": "Autonomous",
-    "authorityModes": {
-        "autonomous": {
-            "description": "Full Agent - Do everything until done",
-            "maxIterations": 10,
-            "autoTest": true,
-            "stopOnlyFor": [
-                "high_risk_actions"
-            ]
-        },
-        "collaborative": {
-            "description": "Always ask before executing",
-            "requireApprovalFor": [
-                "write_file",
-                "run_command"
-            ]
-        }
-    },
-    "rag": {
-        "enabled": true,
-        "autoIndex": true,
-        "indexOnStartup": true,
-        "maxFiles": 500,
-        "topK": 3,
-        "maxLineLength": 1000
-    },
-    "autoClearHistory": {
-        "enabled": true,
-        "mode": "smart",
-        "keepSystemPrompt": true,
-        "keepRAGContext": false,
-        "showNotification": true
     }
 }
