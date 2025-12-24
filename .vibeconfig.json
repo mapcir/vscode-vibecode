@@ -67,6 +67,25 @@
             "apiKey": "${GEMINI_API_KEY}",
             "defaultModel": "gemini-2.0-flash-exp",
             "models": {
+                "gemini-2.5-pro": {
+                    "contextWindow": 1000000,
+                    "supportsImages": true,
+                    "tags": [
+                        "reasoning",
+                        "code",
+                        "top-tier",
+                        "newest"
+                    ]
+                },
+                "gemini-2.5-flash": {
+                    "contextWindow": 1000000,
+                    "supportsImages": true,
+                    "tags": [
+                        "code",
+                        "fast",
+                        "newest"
+                    ]
+                },
                 "gemini-2.0-flash-thinking-exp-1219": {
                     "contextWindow": 32768,
                     "supportsImages": true,
@@ -87,44 +106,16 @@
                         "newest"
                     ]
                 },
-                "gemini-1.5-pro": {
-                    "contextWindow": 2097152,
-                    "supportsImages": true,
-                    "tags": [
-                        "reasoning",
-                        "code",
-                        "top-tier",
-                        "stable"
-                    ]
-                },
-                "gemini-1.5-pro-002": {
-                    "contextWindow": 2097152,
-                    "supportsImages": true,
-                    "tags": [
-                        "reasoning",
-                        "code",
-                        "stable"
-                    ]
-                },
-                "gemini-1.5-flash": {
+                "gemini-2.0-flash": {
                     "contextWindow": 1048576,
                     "supportsImages": true,
                     "tags": [
                         "code",
                         "fast",
-                        "stable"
+                        "newest"
                     ]
                 },
-                "gemini-1.5-flash-002": {
-                    "contextWindow": 1048576,
-                    "supportsImages": true,
-                    "tags": [
-                        "code",
-                        "fast",
-                        "stable"
-                    ]
-                },
-                "gemini-1.5-flash-8b": {
+                "gemini-2.0-flash-lite": {
                     "contextWindow": 1048576,
                     "supportsImages": true,
                     "tags": [
@@ -347,9 +338,9 @@
         "hybrid": {
             "type": "hybrid",
             "brain": "gemini",
-            "brainModel": "gemini-1.5-flash-001",
+            "brainModel": "gemini-2.5-pro",
             "worker": "gemini",
-            "workerModel": "gemini-1.5-flash-001"
+            "workerModel": "gemini-2.0-flash-exp"
         }
     }
 }
